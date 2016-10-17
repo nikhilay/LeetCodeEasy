@@ -16,7 +16,7 @@ public class IntersectionOfTwoArrays {
         }
         HashSet<Integer> list2 = new HashSet<>();
         for(int i: nums2){
-            if(list1.contains(i)){I
+            if(list1.contains(i)){
                 list2.add(i);
             }
         }

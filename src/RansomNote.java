@@ -8,7 +8,7 @@
  * Each  letter  in  the  magazine  string  can  only  be  used  once  in  your  ransom  note.
  */
 public class RansomNote {
-    
+
     public void canConstruct(String ransomNote, String magazine) {
 
         int[] tracker = new int[128];
