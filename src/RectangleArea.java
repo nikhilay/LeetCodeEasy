@@ -6,7 +6,7 @@
  * Find the total area covered by two rectilinear rectangles in a 2D plane.
  * Each rectangle is defined by its bottom left corner and top right corner coordinates.
  */
-public class RectangleArea {R
+public class RectangleArea {
     public int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
         if (C < E || A > G) {
             return (C - A) * (D - B) + (G - E) * (H - F);
