@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.zip.CheckedInputStream;
 
 /**
@@ -11,8 +13,16 @@ public class test {
         hmap.put('A',2);
         hmap.put('a',3);
 
-        for(Character c:hmap.keySet()){
-            System.out.print(c +" ");
+//        for(Character c:hmap.keySet()){
+//            System.out.print(c +" ");
+//        }
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(1);
+        list.add(2);
+
+        for(int i =0;i<list.size();i++){
+            System.out.println(list.get(i));
         }
+
     }
 }

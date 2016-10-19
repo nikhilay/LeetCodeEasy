@@ -15,7 +15,6 @@ public class PowerOfThree {
     }
 
     //Without Math
-
     public boolean isPowerOfThreeWithoutMath(int n) {
         float input = n;
         while (input != 0) {
@@ -28,7 +27,6 @@ public class PowerOfThree {
         System.out.println("It is not power of three");
         return false;
     }
-
 
     //With Math
     public boolean isPowerOfThreeWithMath(int n) {
