@@ -7,17 +7,17 @@
  */
 public class ExcelSheetColumnNumber {
     public static void main(String[] args) {
-        new ExcelSheetColumnNumber().titleToNumber("BA");
+        new ExcelSheetColumnNumber().titleToNumber("AZB");
     }
 
     public int titleToNumber(String s) {
         s = s.toLowerCase();
-        int power = -1;
+        int power = 0;
         int sum = 0;
         for (int i = s.length() - 1; i >= 0; i--) {
             char c = s.charAt(i);
             int asciiValue = (int) c - 97+1;
-            sum += 26 * Math.pow(26, power)*asciiValue;
+            sum += Math.pow(26, power)*asciiValue;
             power++;
 
         }
