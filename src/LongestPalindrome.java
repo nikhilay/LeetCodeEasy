@@ -1,4 +1,4 @@
-import java.util.HashMap;
+gi
 
 /**
  * Created by Nikhil on 10/17/16.
@@ -10,33 +10,26 @@ import java.util.HashMap;
  */
 
 public class LongestPalindrome {
+
     public int longestPalindrome(String s) {
-
-        HashMap<Character, Integer> hmap = new HashMap<>();
-        for (int i = 0; i < s.length(); i++) {
-            Character c = s.charAt(i);
-            if (hmap.containsKey(c)) {
-                int currentCount = hmap.get(c);
-                hmap.put(c, currentCount + 1);
-
-            } else {
-                hmap.put(c, 1);
+        int[] tracker = new int[256];
+        for(int i=0;i<s.length();i++){
+            char c = s.charAt(i);
+            tracker[c]++;
+        }
+        int even=0;
+        int odd =0;
+        boolean flag = false;
+        for(int i=0;i<tracker.length;i++){
+            if(tracker[i]%2==0){
+                even+=tracker[i];
+            }else{
+                odd = odd + tracker[i]-1;
+                flag = true;
             }
         }
-        boolean flag = true;
-        int sum = 0;
-        for (Character c : hmap.keySet()) {
-            int count = hmap.get(c);
-            if (count % 2 == 0) {
-                sum += count;
-            } else if (count % 2 == 1 && flag == true) {
-                sum += count;
-                flag = false;
-            } else if (count % 2 == 1 && flag == false) {
-                count = count - 1;
-                sum += count;
-            }
-        }
-        return sum;
+        int flagValue = flag==true?1:0;
+        return odd+even+ flagValue;
+
     }
 }
