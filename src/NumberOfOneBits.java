@@ -8,19 +8,12 @@
  */
 public class NumberOfOneBits {
 
-    public static void main(String[] args) {
-        new NumberOfOneBits().hammingWeight(32);
-    }
-
     public int hammingWeight(int n) {
         int count=0;
-        while (n > 0) {
-          if((n&1)==1){
-              count++;
-          }
-          n>>=1;
+        for(int i=0;i<32;i++){
+            if((n&1)==1) count++;
+            n>>=1;
         }
-        System.out.println("Number of one bits is "+count);
         return count;
     }
 }
