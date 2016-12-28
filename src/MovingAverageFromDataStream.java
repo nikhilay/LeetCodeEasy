@@ -1,23 +1,53 @@
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by Nikhil on 10/19/16.
  */
+
+/**
+ * Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
+ */
 public class MovingAverageFromDataStream {
 
-    public void findMovingAverage(int val) {
-        List<Integer> queue = new LinkedList<Integer>();
 
-        if (queue.size() == 3) {
-            int removedValue = queue.remove(0);
-            float avg = (removedValue + queue.get(1) + queue.get(2)) / 3f;
-            System.out.println("Moving average is " + avg);
+    /**
+     * Initialize your data structure here.
+     */
+    Queue<Integer> queue = new LinkedList<>();
+    double prevAvg = 0.0;
+    int maxSize;
+
+    public MovingAverageFromDataStream(int size) {
+        maxSize = size;
+    }
+
+    public double next(int val) {
+        if (queue.isEmpty()) {
             queue.add(val);
-
+            prevAvg = val;
+            return val;
         } else {
-            queue.add(val);
-        }
+            double prevTotal = prevAvg * queue.size();
+            if (queue.size() < maxSize) {
+                queue.add(val);
+                prevAvg = (prevTotal + val) / queue.size();
+                return prevAvg;
 
+            } else {
+                double temp = prevTotal - queue.poll() + val;
+                queue.add(val);
+                prevAvg = temp / maxSize;
+                return prevAvg;
+
+            }
+
+        }
     }
 }
+
+/**
+ * Your MovingAverage object will be instantiated and called as such:
+ * MovingAverage obj = new MovingAverage(size);
+ * double param_1 = obj.next(val);
+ */
