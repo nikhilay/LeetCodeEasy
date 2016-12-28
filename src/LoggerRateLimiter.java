@@ -3,14 +3,31 @@ import java.util.HashMap;
 /**
  * Created by Nikhil on 10/17/16.
  */
-public class LoggerRateLimiter {
 
-    public boolean shouldWePrint(String message, int timestamp) {
-        HashMap<String, Integer> tracker = new HashMap<>();
-        return shouldWePrint(message, timestamp, tracker);
+/**
+ * Design a logger system that receive stream of messages along with its timestamps, each message should be printed if
+ * and only if it is not printed in the last 10 seconds.
+ * Given a message and a timestamp (in seconds granularity), return true if the message should be printed in the given
+ * timestamp, otherwise returns false.
+ * It is possible that several messages arrive roughly at the same time.
+ */
+public class LoggerRateLimiter {
+    /**
+     * Initialize your data structure here.
+     */
+    HashMap<String, Integer> tracker;
+
+    public LoggerRateLimiter() {
+        tracker = new HashMap<>();
     }
 
-    private boolean shouldWePrint(String message, int timestamp, HashMap<String, Integer> tracker) {
+    /**
+     * Returns true if the message should be printed in the given timestamp, otherwise returns false.
+     * If this method returns false, the message will not be printed.
+     * The timestamp is in seconds granularity.
+     */
+
+    public boolean shouldPrintMessage(int timestamp, String message) {
         if (tracker.containsKey(message)) {
             if (timestamp - tracker.get(message) >= 10) {
                 int newTimestamp = timestamp;
@@ -23,6 +40,5 @@ public class LoggerRateLimiter {
             return true;
         }
         return false;
-
     }
 }
