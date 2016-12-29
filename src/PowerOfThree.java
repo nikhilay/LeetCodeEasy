@@ -1,4 +1,4 @@
-import static com.sun.tools.javac.jvm.ByteCodes.ret;
+
 
 /**
  * Created by Nikhil on 10/18/16.
@@ -9,28 +9,27 @@ import static com.sun.tools.javac.jvm.ByteCodes.ret;
  */
 public class PowerOfThree {
 
-    public static void main(String[] args) {
-        new PowerOfThree().isPowerOfThreeWithoutMath(76);
-        System.out.println(new PowerOfThree().isPowerOfThreeWithMath(76));
-    }
+    //Best Solution
+    public boolean isPowerOfThree(int n) {
+        // 1162261467 is 3^19,  3^20 is bigger than int
+        return n>0 && (Math.pow(3,19)%n)==0;
 
+    }
     //Without Math
     public boolean isPowerOfThreeWithoutMath(int n) {
         float input = n;
         while (input != 0) {
             if (input == 1f) {
-                System.out.println("It is power of three");
                 return true;
             }
             input = input / 3f;
         }
-        System.out.println("It is not power of three");
         return false;
     }
 
     //With Math
     public boolean isPowerOfThreeWithMath(int n) {
         if (n == 0) return false;
-        return n == Math.pow(3, Math.log(n) / Math.log(3));
+        return n == Math.pow(3, Math.ceil(Math.log(n) / Math.log(3)));
     }
 }
