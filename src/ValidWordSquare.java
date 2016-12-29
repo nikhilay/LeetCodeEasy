@@ -2,6 +2,8 @@
  * Created by Nikhil on 10/19/16.
  */
 
+import java.util.List;
+
 /**
  * Given a sequence of words, check whether it forms a valid word square.
  * A sequence of words forms a valid word square if the kth row and column read the exact same string,
@@ -13,38 +15,18 @@
  */
 
 public class ValidWordSquare {
-    public static void main(String[] args) {
-        String[] input = {"abcd", "bnrt", "crmy", "dty"};
 
-        new ValidWordSquare().isValidWordSquare(input);
-    }
-
-    public void isValidWordSquare(String[] input) {
-        int stringLen = input[0].length();
-        char[][] checker = new char[stringLen][input.length];
-        int index = 0;
-        for (String s : input) {
-            if (stringLen != s.length()) {
-                System.out.println(" Words are not of equal length");
-                return;
-            }
-            checker[index] = s.toCharArray();
-            index++;
-        }
-        if (input.length != stringLen) {
-            System.out.println("Word square not possible");
-            return;
-        }
-        for (int i = 0; i < checker[0].length; i++) {
-            for (int j = 0; j < checker.length; j++) {
-                if (checker[i][j] != input[i].charAt(j)) {
-                    System.out.println("Not a word square");
-                    return;
+    public boolean validWordSquare(List<String> words) {
+        if (words == null || words.size() == 0) return true;
+        int n = words.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < words.get(i).length(); j++) {
+                if (j>=n||words.get(j).length()<=i||words.get(i).charAt(j) != words.get(j).charAt(i)) {
+                    return false;
                 }
             }
         }
-        System.out.println("Valid word square!!");
+        return true;
     }
-
 
 }
