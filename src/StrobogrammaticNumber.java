@@ -1,35 +1,35 @@
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
  * Created by Nikhil on 10/18/16.
  */
-public class StrobogrammaticNumber {
-    public static void main(String[] args) {
-        new StrobogrammaticNumber().isStrobogrammaticNumber(6969 );
-    }
 
-    public boolean isStrobogrammaticNumber(int n) {
-        String st = String.valueOf(n);
-        HashSet<Character> hset = new HashSet<>();
-        hset.add('0');
-        hset.add('1');
-        hset.add('8');
+/**
+ * A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).
+ * Write a function to determine if a number is strobogrammatic. The number is represented as a string.
+ * For example, the numbers "69", "88", and "818" are all strobogrammatic.
+ */
+public class StrobogrammaticNumber {
+
+    public boolean isStrobogrammaticNumber(String st) {
+        HashMap<Character, Character> hmap = new HashMap<>();
+        hmap.put('0', '0');
+        hmap.put('1', '1');
+        hmap.put('8', '8');
+        hmap.put('6', '9');
+        hmap.put('9', '6');
 
         int end = st.length() - 1;
-        for (int start = 0; start <= end; start++) {
+        int start = 0;
+        while (start <= end) {
             char startChar = st.charAt(start);
             char endChar = st.charAt(end);
-            if ((hset.contains(startChar)) && (hset.contains(endChar))) {
-                end--;
-            } else if ((startChar == '6' && endChar == '9')||(startChar == '9' && endChar == '6')){
-                end--;
-
-            } else{
-                System.out.println("Not a Strobogrammatic Number");
-                return false;
-            }
+            if (!hmap.containsKey(startChar) || !hmap.containsKey(endChar)) return false;
+            if (hmap.get(startChar) != endChar) return false;
+            start++;
+            end--;
         }
-        System.out.println("Its a Strobogrammatic Number");
         return true;
 
     }
