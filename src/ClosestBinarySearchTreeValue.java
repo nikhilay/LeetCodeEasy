@@ -12,7 +12,7 @@ public class ClosestBinarySearchTreeValue {
     /**
      * Definition for a binary tree node.
      */
-    public class TreeNode {
+    class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -22,12 +22,12 @@ public class ClosestBinarySearchTreeValue {
         }
     }
 
-    private int ans = Integer.MAX_VALUE;
-    private double min = Integer.MAX_VALUE;
+    private long ans = Long.MAX_VALUE;
+    private double min = Long.MAX_VALUE;
 
     public int closestValue(TreeNode root, double target) {
         findClosestValue(root, target);
-        return ans;
+        return (int) ans;
 
     }
 
