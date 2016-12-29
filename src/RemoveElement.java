@@ -7,26 +7,21 @@
  * (Note: The order of elements can be changed. It doesn't matter what you leave beyond the new length.)
  */
 public class RemoveElement {
-
-    public static void main(String[] args) {
-        int[] input = {1,2,4,2,2,3};
-        new RemoveElement().removeElement(input,2);
-    }
-    public int removeElement(int[] A, int elem) {
+    public int removeElement(int[] nums, int val) {
         int i = 0;
         int j = 0;
 
-        while (i < A.length) {
-            if (A[i] != elem) {
-                int temp = A[i];
-                A[j] = temp;
+        while (i < nums.length) {
+            if (nums[i] != val) {
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
                 j++;
 
             }
             i++;
 
         }
-        System.out.println("New Length is "+ j);
         return j;
     }
 }

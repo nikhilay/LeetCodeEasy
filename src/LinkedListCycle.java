@@ -7,7 +7,7 @@
  * x , 2x -
  */
 public class LinkedListCycle {
-    public class ListNode {
+    class ListNode {
         int val;
         ListNode next;
 

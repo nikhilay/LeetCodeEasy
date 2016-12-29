@@ -1,5 +1,5 @@
 import java.util.*;
-import java.util.zip.CheckedInputStream;
+
 
 /**
  * Created by Nikhil on 10/17/16.
@@ -7,8 +7,11 @@ import java.util.zip.CheckedInputStream;
 public class test {
 
     public static void main(String[] args) {
-        String s="  n.i.khi   l   ";
-        System.out.println(s.trim());
+        String s="nikhil";
+        System.out.println(s.substring(0,s.length()));
+        char c = 0;
+        System.out.println(c +" "+(int)c);
+        System.out.println((Math.sqrt(89)-1)/2.0);
 
 
     }
@@ -18,7 +21,7 @@ public class test {
 
 /*
  * Complete the function below.
- */
+
 
     static int countDuplicates(int[] numbers) {
 
@@ -48,10 +51,6 @@ public class test {
 
 
 
-    /*
- * Complete the function below.
- */
-
     List<String> result = new LinkedList<String>();
 
     static String[] buildSubsequences(String s) {
@@ -79,9 +78,8 @@ public class test {
 
 
 
-    /*
- * Complete the function below.
- */
+
+
 
     static String rearrangeWord(String word) {
 
@@ -120,4 +118,4 @@ public class test {
         return res;
     }
 
-
+ */

@@ -10,19 +10,16 @@ import java.util.HashSet;
  */
 public class ContainsDuplicates {
 
-    public void checkIfitContainDuplicates(int[] nums) {
+    public boolean checkIfitContainDuplicates(int[] nums) {
         HashSet<Integer> hset = new HashSet<>();
-
         for (int i : nums) {
             if (hset.contains(i)) {
-                System.out.println("Contains duplicates");
-                return;
+                return true;
             } else {
                 hset.add(i);
             }
         }
-
-        System.out.println("Does not contain duplicates");
+        return false;
     }
 
 }

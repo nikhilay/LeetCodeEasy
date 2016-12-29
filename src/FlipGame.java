@@ -3,6 +3,7 @@
  */
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * You are playing the following Flip Game with your friend: Given a string that contains only these two characters: + and -,
@@ -13,24 +14,19 @@ import java.util.LinkedList;
  */
 public class FlipGame {
 
-    public static void main(String[] args) {
-     new FlipGame().generatePossibleNextMoves("++++");
-    }
-
-    public void generatePossibleNextMoves(String s) {
+    public List<String> generatePossibleNextMoves(String s) {
         LinkedList<String> result = new LinkedList();
+        char[] arr = s.toCharArray();
         for (int i = 0; i < s.length() - 1; i++) {
-            StringBuilder sb = new StringBuilder();
             if (s.charAt(i) == '+' && s.charAt(i + 1) == '+') {
-                  sb.append(s.substring(0,i));
-                  sb.append("--");
-                  sb.append(s.substring(i+2));
-                result.add(sb.toString());
+                arr[i] = '-';
+                arr[i + 1] = '-';
+                result.add(new String(arr));
+                arr[i] = '+';
+                arr[i + 1] = '+';
             }
-        }
 
-        for(String str: result){
-            System.out.println(str);
         }
+        return result;
     }
 }
