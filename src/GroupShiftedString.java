@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class GroupShiftedString {
     public static void main(String[] args) {
-        String[] input = {"abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"};
+        String[] input = {"abc", "am"};
         new GroupShiftedString().groupTheStrings(input);
     }
 
@@ -27,8 +27,10 @@ public class GroupShiftedString {
                 int difference = (int) s.charAt(i) - (int) s.charAt(0);
                 int diff = difference < 0 ? difference + 26 : difference;
                 sb.append(String.valueOf(diff));
+                sb.append(",");
             }
             String st = sb.toString();
+            System.out.println(st);
             if (result.containsKey(st)) {
                 result.get(st).add(s);
             } else {
