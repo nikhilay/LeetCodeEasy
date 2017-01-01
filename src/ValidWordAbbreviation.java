@@ -33,6 +33,7 @@ public class ValidWordAbbreviation {
             char a = abbr.charAt(index2);
 
             if (Character.isDigit(a)) {
+                if(a=='0') return false;
                 int start = index2;
                 index2++;
                 for (int i = index2; i < abbr.length(); i++) {
@@ -44,6 +45,7 @@ public class ValidWordAbbreviation {
                     }
                 }
                 int iter;
+                index2 = index2+1;
                 if (index2 == abbr.length()) {
                     iter = Integer.valueOf(abbr.substring(start));
                 } else {
