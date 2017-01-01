@@ -11,26 +11,21 @@ public class ReadNCharactersGivenRead4 {
 
     public int read(char[] buf, int n) {
         char[] buf4 = new char[4];
-        if(n<=4) return read4(buf4);
-        buf = new char[n];
         boolean eof = false;
         int size = 0;
         int read = 0;
+        int index = 0;
         int charactersRead = 0;
-        while (!eof && read < n) {
+        while (!eof && index < n) {
             charactersRead = read4(buf4);
-            if (charactersRead < 4) {
-                eof = true;
-
-            }
-            size = Math.min(n - size, charactersRead);
+            if (charactersRead < 4) eof = true;
+            size = Math.min(n - index, charactersRead);
             read += size;
-
-            System.arraycopy(buf4, 0, buf, buf4.length, size);
-
+            for(int i=0;i<size;i++){
+                buf[index++] = buf4[i];
+            }
         }
         return read;
-
     }
 
     private int read4(char[] foo) {
